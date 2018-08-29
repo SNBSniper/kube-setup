@@ -1,0 +1,29 @@
+apiVersion: v1
+clusters:
+- cluster:
+    server: https://18DCAD10A536CE736163F544C1425A67.sk1.us-east-1.eks.amazonaws.com
+    certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUN5RENDQWJDZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFWTVJNd0VRWURWUVFERXdwcmRXSmwKY201bGRHVnpNQjRYRFRFNE1EZ3lOekl3TURNME5Wb1hEVEk0TURneU5ESXdNRE0wTlZvd0ZURVRNQkVHQTFVRQpBeE1LYTNWaVpYSnVaWFJsY3pDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBTllZCnhuei9Ua2hCeEtCRENFRkNTemU0QjlwWUpJNzc4MmlaR0NiOUFkb2t6Y2xINlEyN2RNWWtmV3pUdlhwSXhoLzcKOENnS1kvWUJpQnlFSEdSNitDYTZXTzdwckZ6SW5NdHlaeWRrK0I1aWs0SWJ5UDdnNFUzZzJSMDlSaEZEWXg2bgpEVnNJMExscTNRenRQSmU5cEpjb25iN3RWM1dMZ2lBbFNaYXY2bElobUUycVBuMFFZY25iOWZzcjFEaHM3VllGCkZuN21jRmVXRUwvcnRIRE10b2VCNFhzOW5RMjRKSjFrNm5yOXNZRk13bm5zMU5WSnE4Y24zaFJFU0ppZ3ZpdzUKRmZ6SFJvb29rNWs2dDZkdTBxclJHaDVCWW1Yd3RCb1czcEdzdW5WQTRHbVdLYmtiMUsxZlVaTWxQN1lBVGNJagpYRUZGWE1UbDBGQldZd1hHamlrQ0F3RUFBYU1qTUNFd0RnWURWUjBQQVFIL0JBUURBZ0trTUE4R0ExVWRFd0VCCi93UUZNQU1CQWY4d0RRWUpLb1pJaHZjTkFRRUxCUUFEZ2dFQkFHVTVDL0hTMTMyeGl0c09naWg2cHJpS1lkVGkKSVlQQnpVallGczVFSk4yYmR1RkZteXJDMmwxaFcyVUNiaWltWVR4V3BGZ3VXbDU5TlhDbU4rTVA0cEhRQmttZQpxTnVvZ3E4bmhZbVdzbHpPZkk3dEVnb0ZENTIvNXlpSGxIeWYxQlNRc2tPeU93T09jVHQ4VjNFems0alNuSXlkCndOT1pmdnl4QmQ3MGUyNVpFZFRETTM0cjNoV09vbWVldWNxdGY4Sm1wczNiVHc0WGhKUGJDcUFaWFBoRHVwbmUKRW9KdFl0M0FZQ3NsTllFaHZ6dFFEaFNpNW1QUTIzeFJJMXJ5aE9oNGJna0xTSUFuWUhXbVJDU21CSnlNaTFyMgpxLzVrT0dMcGJ0Zno2NDVtMDJCejM4eUYxdDNhWHgyZWVTeFprNDVxZkJLTjgrNnZyVjFxRFRkSS9CMD0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=
+  name: demo-cluster-eks-2
+contexts:
+- context:
+    cluster: demo-cluster-eks-2
+    user: aws
+  name: aws
+current-context: aws
+kind: Config
+preferences: {}
+users:
+- name: aws
+  user:
+    exec:
+      apiVersion: client.authentication.k8s.io/v1alpha1
+      command: aws-iam-authenticator
+      args:
+        - "token"
+        - "-i"
+        - "demo-cluster-eks-2"
+          #  - "-r"
+        - "arn:aws:iam:223739484113:role/eks-role"
+          #env:
+          #- name: AWS_PROFILE
+          #value: "rep"

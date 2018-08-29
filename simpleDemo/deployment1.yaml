@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo1
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: demo1
+      spring: boot
+      microservice: microservice1
+  template:
+    metadata:
+      labels:
+        app: demo1
+        spring: boot
+        microservice: microservice1
+    spec:
+      containers:
+      - name: spring-demo-actuator
+        image: danieltapia/repo-demoo:0.0.2
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 8080
+
+

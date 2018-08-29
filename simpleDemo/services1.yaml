@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: demo-svc-1
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: demo1
+    spring: boot
+    microservice: microservice1
+
+  type: NodePort

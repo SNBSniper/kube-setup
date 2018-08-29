@@ -1,0 +1,22 @@
+{
+    "cluster": {
+        "name": "demo-cluster-eks-2",
+        "arn": "arn:aws:eks:us-east-1:223739384113:cluster/demo-cluster-eks-2",
+        "createdAt": 1535399771.67,
+        "version": "1.10",
+        "roleArn": "arn:aws:iam::223739384113:role/eks-role",
+        "resourcesVpcConfig": {
+            "subnetIds": [
+                "subnet-063fe9e781d128cf8",
+                "subnet-0026d65d2e8a1a0c6"
+            ],
+            "securityGroupIds": [
+                "sg-0eeaf0e782118a1ce"
+            ],
+            "vpcId": "vpc-0b0b8eacd9b7b75e7"
+        },
+        "status": "CREATING",
+        "certificateAuthority": {}
+    }
+}
+

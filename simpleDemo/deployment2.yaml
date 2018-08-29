@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo2
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: demo2
+      spring: boot
+      microservice: microservice2
+  template:
+    metadata:
+      labels:
+        app: demo2
+        spring: boot
+        microservice: microservice2
+    spec:
+      containers:
+      - name: spring-demo-actuator
+        image: snbsniper29/the-ark:0.0.1
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 8080
+        command: [ "sh", "-c"]
+        args:
+        - while true; do
+            echo -en '\n';
+            printenv MY_NODE_NAME MY_POD_NAME MY_POD_NAMESPACE;
+            printenv MY_POD_IP MY_POD_SERVICE_ACCOUNT;
+            sleep 10;
+          done;
+        env:
+        - name: MY_NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        - name: MY_POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: MY_POD_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: MY_POD_IP
+          valueFrom:
+            fieldRef:
+              fieldPath: status.podIP
+        - name: MY_POD_SERVICE_ACCOUNT
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.serviceAccountName
+        - name: GET_HOSTS_FROM
+          value: dns
+
